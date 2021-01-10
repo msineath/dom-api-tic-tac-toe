@@ -16,8 +16,8 @@ let divs = document.querySelectorAll('div');
 let currentPlayer = x;
 
 //...array for each character's moves...
-const xArray = [];
-const oArray = [];
+let xArray = [];
+let oArray = [];
 
 //...winning combinations as 2d array...
 const winningArrays = [
@@ -102,6 +102,11 @@ window.addEventListener('DOMContentLoaded', () => {
         oWins = false;
         tie = false;
         header.innerText = '';
+        xArray = [];
+        oArray = [];
+        moveCounter = 0;
+        currentPlayer = x;
+        
         let board = document.getElementsByClassName('taken');
      
         for (i=0; i<board.length; i++) {
