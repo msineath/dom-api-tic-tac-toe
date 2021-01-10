@@ -8,6 +8,10 @@ let oWins = false;
 let tie = false;
 let moveCounter = 0;
 
+//...h1...
+let header = document.getElementById('game-status');
+let divs = document.querySelectorAll('div');
+
 //...x goes first...
 let currentPlayer = x;
 
@@ -16,7 +20,6 @@ const xArray = [];
 const oArray = [];
 
 //...winning combinations as 2d array...
-let divs = document.querySelectorAll('div');
 const winningArrays = [
     [document.querySelector('[id*="0"]').id, document.querySelector('[id*="1"]').id, document.querySelector('[id*="2"]').id],
     [document.querySelector('[id*="3"]').id, document.querySelector('[id*="4"]').id, document.querySelector('[id*="5"]').id],
@@ -67,7 +70,7 @@ window.addEventListener('DOMContentLoaded', () => {
         event.target.appendChild(move);
         
         //Check for win.
-        let header = document.getElementById('game-status');
+
         for (i = 0; i < winningArrays.length; i++) {
             let subArr = winningArrays[i];
             let checker = (playerScore, requirements) => requirements.every(el => playerScore.includes(el));
@@ -95,7 +98,25 @@ window.addEventListener('DOMContentLoaded', () => {
     
     //Start new game.    
     reset.addEventListener('click', event => {
-        window.location.reload();
-    })
+        xWins = false;
+        oWins = false;
+        tie = false;
+        header.innerText = '';
+        let board = document.getElementsByClassName('taken');
+     
+        for (i=0; i<board.length; i++) {
+            board[i].classList.remove('taken');
+        }
+        
+        let characters = document.getElementsByTagName('img');
+        
+        for (i = 0; i < characters.length; i++) {
+            characters[i].parentNode.removeChild(characters[i]);
+        }
+    
+    
+    
+    
+    });
 
 })
